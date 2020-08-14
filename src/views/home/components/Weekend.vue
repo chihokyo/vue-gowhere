@@ -6,11 +6,11 @@
     <ul>
       <li
         class="item border-bottom"
-        v-for="item of weekendList"
+        v-for="item of list"
         :key="item.id"
       >
         <div class="item-img-wrapper">
-          <img class="item-img" :src="item.url" />
+          <img class="item-img" :src="item.imgUrl" />
         </div>
         <div class="item-info">
           <p class="item-title">{{item.title}}</p>
@@ -24,29 +24,8 @@
 <script>
 export default {
   name: 'HomeWeekend',
-  data () {
-    return {
-      weekendList: [
-        {
-          id: '0001',
-          title: '八达岭长城',
-          desc: '八达岭长城',
-          url: 'https://imgs.qunarzz.com/sight/source/1811/7e/476589267ebb41.jpg_r_640x214_bf599709.jpg'
-        },
-        {
-          id: '0002',
-          title: '北京乐多港万豪酒店汤乐宫温泉',
-          desc: '北京乐多港万豪酒店汤乐宫温泉',
-          url: 'https://imgs.qunarzz.com/sight/source/1606/85/c6b6bad1b977e.jpg_r_640x214_5c638941.jpg'
-        },
-        {
-          id: '0003',
-          title: '北京野生动物园',
-          desc: '北京野生动物园',
-          url: 'https://imgs.qunarzz.com/sight/source/1505/aa/7baaf8a851d221.jpg_r_640x214_1431200f.jpg'
-        }
-      ]
-    }
+  props: {
+    list: Array
   }
 }
 </script>

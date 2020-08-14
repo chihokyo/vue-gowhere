@@ -10,7 +10,7 @@
         >
           <div class="icon-img">
             <img class="icon-img-content"
-                :src="item.url"
+                :src="item.imgUrl"
                 :alt="item.desc"
             >
           </div>
@@ -24,59 +24,15 @@
 <script>
 export default {
   name: 'HomeIcons',
+  props: {
+    list: Array
+  },
   data () {
     return {
       swiperOptions: {
         pagination: '.swiper-pagination',
         autoplay: false
-      },
-      iconList: [
-        {
-          id: '0001',
-          desc: '酒店',
-          url: 'https://imgs.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png'
-        },
-        {
-          id: '0002',
-          desc: '一日游',
-          url: 'https://imgs.qunarzz.com/piao/fusion/1804/5a/13ceb38dcf262f02.png'
-        },
-        {
-          id: '0003',
-          desc: '北京园博会',
-          url: 'https://imgs.qunarzz.com/piao/fusion/1803/4c/eac47dd8def8de02.png'
-        },
-        {
-          id: '0004',
-          desc: '香山公园',
-          url: 'https://mp-piao-admincp.qunarzz.com/mp_piao_admin_mp_piao_admin/admin/20193/a40ee278d67000f2a29d2e20f6a029b3.png'
-        },
-        {
-          id: '0005',
-          desc: '凤凰陵',
-          url: 'https://mp-piao-admincp.qunarzz.com/mp_piao_admin_mp_piao_admin/admin/20193/a40ee278d67000f2a29d2e20f6a029b3.png'
-        },
-        {
-          id: '0006',
-          desc: '古北水镇',
-          url: 'https://imgs.qunarzz.com/piao/fusion/1803/67/9a1678221b8e0e02.png'
-        },
-        {
-          id: '0007',
-          desc: '中国马镇',
-          url: 'https://imgs.qunarzz.com/piao/fusion/1803/47/c2b659e048b11602.png'
-        },
-        {
-          id: '0008',
-          desc: '圆明园',
-          url: 'https://imgs.qunarzz.com/piao/fusion/1803/6c/9e54a8540fee0102.png'
-        },
-        {
-          id: '0009',
-          desc: '北京园博会4',
-          url: 'https://imgs.qunarzz.com/piao/fusion/1803/4c/eac47dd8def8de02.png'
-        }
-      ]
+      }
     }
   },
   // 计算属性来进行翻页
@@ -85,7 +41,7 @@ export default {
       // 新建一个数组k 第几页 v 那一页的数据
       const pages = []
       // 进行循环
-      this.iconList.forEach((item, index) => {
+      this.list.forEach((item, index) => {
         // 计算有多少页
         const page = Math.floor(index / 8)
         // 如果那一页还没有数据
