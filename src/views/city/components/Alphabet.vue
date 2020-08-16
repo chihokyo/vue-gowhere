@@ -1,7 +1,16 @@
 <template>
   <div>
     <ul class="list">
-      <li class="item" v-for="(city,key) of cities" :key="key">{{key}}</li>
+      <li class="item"
+        v-for="city of letters"
+        :key="city"
+        :ref="city"
+        @click="handleLetterClick"
+        @touchstart="handleTouchStart"
+        @touchmove="handleTouchMove"
+        @touchend="handleTouchEnd"
+      >{{city}}
+      </li>
     </ul>
   </div>
 </template>
@@ -12,6 +21,54 @@ export default {
   name: 'CityAlphabet',
   props: {
     cities: Object
+  },
+  computed: {
+    letters () {
+      const letters = []
+      for (const i in this.cities) {
+        letters.push(i)
+      }
+      return letters
+    }
+  },
+  data () {
+    return {
+      touchStatus: false,
+      bugA: 'A',
+      startY: 0,
+      timer: null
+    }
+  },
+  // city数据变化后计算
+  updated () {
+    this.startY = this.$refs[this.bugA][0].offsetTop
+  },
+  methods: {
+    handleLetterClick (e) {
+      this.$emit('change', e.target.innerText)
+    },
+    handleTouchStart () {
+      this.touchStatus = true
+    },
+    handleTouchMove (e) {
+      // 对滑动操作进行节流，防止函数多次触发
+      if (this.touchStatus) {
+        if (this.timer) {
+          clearTimeout(this.timer)
+        }
+        this.timer = setTimeout(() => {
+          const touchY = e.touches[0].clientY - 79
+          const index = Math.floor((touchY - this.startY) / 20)
+          if (index >= 0 && index < this.letters.length) {
+            this.$emit('change', this.letters[index])
+          }
+        // 16毫秒
+        }, 16)
+      }
+    },
+    handleTouchEnd () {
+      this.touchStatus = false
+    }
   }
 }
 </script>
