@@ -4,15 +4,21 @@
       <img class="mp-title-img" src="https://imgs.qunarzz.com/piao/fusion/1711/89/ebc329f16c55bb02.png" alt="猜你喜欢">
       <span class="mp-title">猜你喜欢</span>
     </div>
-    <ul class="item border-bottom" v-for="(item,index) of list" :key="index">
-      <li class="item">
+    <ul>
+      <router-link
+        tag="li"
+        class="item border-bottom"
+        v-for="(item,index) of list"
+        :key="index"
+        :to="'/detail/' + item.id"
+      >
         <img class="item-img" :src="item.imgUrl" />
         <div class="item-info">
           <p class="item-title">{{item.title}}</p>
           <p class="item-desc">{{item.desc}}</p>
           <button class="item-button">查看详情</button>
         </div>
-      </li>
+      </router-link>
     </ul>
   </div>
 </template>
