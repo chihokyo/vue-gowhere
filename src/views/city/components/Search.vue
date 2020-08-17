@@ -16,6 +16,7 @@
         <li class="search-item border-bottom"
           v-for="item of list"
           :key="item.id"
+          @click="handleCityClick(item.name)"
         >{{ item.name }}</li>
         <li class="search-item border-bottom" v-show="hasNoData">
           没有找到匹配城市
@@ -27,7 +28,7 @@
 
 <script>
 import BScroll from '@better-scroll/core'
-
+import { mapMutations } from 'vuex'
 export default {
   name: 'CitySearch',
   props: {
@@ -44,6 +45,14 @@ export default {
     hasNoData () {
       return !this.list.length
     }
+  },
+  methods: {
+    handleCityClick (city) {
+      // 同List.vue相同Vuex用法
+      this.changeCityM(city)
+      this.$router.push('/')
+    },
+    ...mapMutations(['changeCityM'])
   },
   watch: {
     keyword () {

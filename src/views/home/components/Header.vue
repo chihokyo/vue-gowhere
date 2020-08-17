@@ -9,6 +9,7 @@
     </div>
     <router-link to="/city">
       <div class="header-right">
+        <!-- vuex传入store共享数据 -->
         {{this.city}}
         <span class="iconfont arrow-icon">&#xe64a;</span>
       </div>
@@ -17,10 +18,13 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
   name: 'HomeHeader',
-  props: {
-    city: String
+  // 计算属性，表示映射
+  // vuex数据映射到计算属性 city
+  computed: {
+    ...mapState(['city'])
   }
 }
 </script>
