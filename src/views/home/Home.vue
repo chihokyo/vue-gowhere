@@ -16,6 +16,7 @@ import HomeSwiper from './components/Swiper'
 import HomeIcons from './components/Icons'
 import HomeRecommend from './components/Recommend'
 import HomeWeekend from './components/Weekend'
+import { mapState } from 'vuex'
 // 引入axios进行异步请求
 import axios from 'axios'
 
@@ -31,17 +32,22 @@ export default {
   },
   data () {
     return {
+      oldCity: '',
       swiperList: [],
       iconList: [],
       recommendList: [],
       weekendList: []
     }
   },
+  // 用来清除缓存
+  computed: {
+    ...mapState(['city'])
+  },
   methods: {
     getHomeInfo () {
       // 需要完成数据模拟 vue.config.js
       // axios.get('/api/index.json')
-      axios.get('/api/index.json')
+      axios.get('/api/index.json?city=' + this.city)
         .then(this.getHomeInfoSuccess)
     },
     getHomeInfoSuccess (res) {
@@ -59,7 +65,19 @@ export default {
   },
   // 在这里进行ajax请求
   mounted () {
+    // console.log('mounted')
+    this.oldCity = this.city
     this.getHomeInfo()
+  },
+  activated () {
+    // 重新显示渲染会执行
+    // console.log('activated')
+    // 如果新旧选择城市不一样
+    if (this.oldCity !== this.city) {
+      // 重新发送axios请求
+      this.oldCity = this.city
+      this.getHomeInfo()
+    }
   }
 }
 </script>
