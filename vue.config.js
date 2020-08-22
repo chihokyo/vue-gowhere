@@ -2,9 +2,10 @@
 module.exports = {
   // 配置转发mock路径
   devServer: {
+    openPage: 'index.html',
     proxy: {
       '/api': {
-        target: 'https://github.com/chihokyo/vue-gowhere/static/mock',
+        target: 'https://chihokyo.github.io/vue-gowhere',
         changeOrigin: true,
         pathRewrite: {
           '^/api': ''
