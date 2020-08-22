@@ -6,7 +6,7 @@
         :key="city"
         :ref="city"
         @click="handleLetterClick"
-        @touchstart="handleTouchStart"
+        @touchstart.prevent="handleTouchStart"
         @touchmove="handleTouchMove"
         @touchend="handleTouchEnd"
       >{{city}}
