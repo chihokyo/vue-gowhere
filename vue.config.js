@@ -5,7 +5,7 @@ module.exports = {
     openPage: 'index.html',
     proxy: {
       '/api': {
-        target: 'https://chihokyo.github.io/vue-gowhere',
+        target: 'https://chihokyo.github.io/',
         changeOrigin: true,
         pathRewrite: {
           '^/api': ''
