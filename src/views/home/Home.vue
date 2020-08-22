@@ -47,7 +47,8 @@ export default {
     getHomeInfo () {
       // 需要完成数据模拟 vue.config.js
       // axios.get('/api/index.json')
-      axios.get('/api/index.json?city=' + this.city)
+      // axios.get('/api/index.json?city=' + this.city)
+      axios.get('/static/mock/index.json?city=' + this.city)
         .then(this.getHomeInfoSuccess)
     },
     getHomeInfoSuccess (res) {
