@@ -37,7 +37,8 @@ export default {
     getDetailSuccess () {
       // 获取路由id
       // axios.get('api/detail.json?id=' + this.$route.params.id)
-      axios.get('api/detail.json', {
+      // axios.get('api/detail.json', {
+      axios.get('/vue-gowhere/static/mock/detail.json', {
         params: {
           id: this.$route.params.id
         }
