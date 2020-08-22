@@ -4,7 +4,7 @@ module.exports = {
   devServer: {
     proxy: {
       '/api': {
-        target: 'http://localhost:8080/static/mock',
+        target: 'https://github.com/chihokyo/vue-gowhere/static/mock',
         changeOrigin: true,
         pathRewrite: {
           '^/api': ''
