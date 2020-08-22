@@ -11,5 +11,9 @@ module.exports = {
         }
       }
     }
-  }
+  },
+  // 测试部署
+  publicPath: process.env.NODE_ENV === 'production'
+    ? '/vue-gowhere/'
+    : '/'
 }
