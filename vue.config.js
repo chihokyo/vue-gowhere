@@ -5,7 +5,7 @@ module.exports = {
     openPage: 'index.html',
     proxy: {
       '/api': {
-        target: 'https://chihokyo.github.io/',
+        target: 'https://chihokyo.github.io/stack/mock',
         changeOrigin: true,
         pathRewrite: {
           '^/api': ''
