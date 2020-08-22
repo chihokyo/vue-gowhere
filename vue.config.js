@@ -5,10 +5,10 @@ module.exports = {
     openPage: 'index.html',
     proxy: {
       '/api': {
-        target: 'https://chihokyo.github.io/stack/mock',
+        target: 'https://chihokyo.github.io/vue-gowhere/',
         changeOrigin: true,
         pathRewrite: {
-          '^/api': ''
+          '^/api': '/static/mock'
         }
       }
     }
